@@ -107,19 +107,21 @@ namespace GestionFerreteria
         private void txt_codigo_Leave(object sender, EventArgs e)
         {
 
-            ColorCampos(txt_codigo);
 
 
-            //if (txt_codigo.Text.Equals("") || txt_codigo.Text.Trim().Length <4)
-            //{
-            //    txt_codigo.BackColor = Color.Red; 
 
-            //}
-            //else
-            //{
-            //    txt_codigo.BackColor = Color.LightGreen;
+            if (txt_codigo.Text.Trim().Length >= 4)
+            {
+                ColorCampos(txt_codigo);
 
-            //}
+            }
+            else
+            {
+                txt_codigo.BackColor = Color.Red;
+                MessageBox.Show("Debe tener 4 o mas caracteres");
+            }
+
+            
 
         }
 
@@ -273,17 +275,48 @@ namespace GestionFerreteria
         public void ColorCampos(TextBox txtAEvaluar)
         {
             TextBox txtCampo = new TextBox();
-
-            if (txtAEvaluar.Text.Equals(""))
+            if (txtAEvaluar.Equals(txt_codigo))
             {
-                
-                txtAEvaluar.BackColor = Color.Red;
+                if (txtAEvaluar.Text.Equals("") || txt_codigo.Text.Trim().Length==0)
+                {
+
+                    txtAEvaluar.BackColor = Color.Red;
+                }
+                else
+                {
+                    
+                    txtAEvaluar.BackColor = Color.LightGreen;
+                }
+            }
+            else if (txtAEvaluar.Equals(txt_costo))
+            {
+                try
+                {
+                    double aux = double.Parse(txt_costo.Text.Trim());
+                    txtAEvaluar.BackColor = Color.LightGreen;
+                }
+                catch (Exception)
+                {
+                    txtAEvaluar.BackColor = Color.Red;
+
+                }
             }
             else
             {
-                //MessageBox.Show("Texto = '" + txtAEvaluar.Text + "'");
-                txtAEvaluar.BackColor = Color.LightGreen;
+                if (txtAEvaluar.Text.Equals(""))
+                {
+
+                    txtAEvaluar.BackColor = Color.Red;
+                }
+                else
+                {
+                    //MessageBox.Show("Texto = '" + txtAEvaluar.Text + "'");
+                    txtAEvaluar.BackColor = Color.LightGreen;
+                }
             }
+            
+
+            
             
         }
     }
