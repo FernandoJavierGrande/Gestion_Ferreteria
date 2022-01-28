@@ -45,14 +45,4 @@ namespace GestionFerreteria.clases
 
 
 
-
-    //producto.codigo = nuevoProd.codigo;
-    //            producto.nombre = nuevoProd.nombre;
-    //            producto.marca = nuevoProd.marca;
-    //            producto.categoria = nuevoProd.categoria;
-    //            producto.descripcion = nuevoProd.descripcion;
-    //            producto.costo = nuevoProd.costo;
-    //            producto.porcentaje = nuevoProd.porcentaje;
-    //            producto.precio = nuevoProd.precio;
-
 }

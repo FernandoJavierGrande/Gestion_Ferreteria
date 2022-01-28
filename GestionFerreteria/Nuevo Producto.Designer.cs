@@ -217,7 +217,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Bisque;
+            this.button1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Location = new System.Drawing.Point(840, 429);
             this.button1.Name = "button1";
@@ -234,6 +234,7 @@
             this.txt_descProv.Size = new System.Drawing.Size(59, 22);
             this.txt_descProv.TabIndex = 6;
             this.txt_descProv.Text = "12";
+            this.txt_descProv.TextChanged += new System.EventHandler(this.txt_descProv_TextChanged);
             this.txt_descProv.Leave += new System.EventHandler(this.txt_descProv_Leave);
             // 
             // txt_precioProveedor
@@ -243,6 +244,7 @@
             this.txt_precioProveedor.Size = new System.Drawing.Size(100, 22);
             this.txt_precioProveedor.TabIndex = 5;
             this.txt_precioProveedor.Text = "1";
+            this.txt_precioProveedor.TextChanged += new System.EventHandler(this.txt_precioProveedor_TextChanged);
             this.txt_precioProveedor.Leave += new System.EventHandler(this.txt_precioProv_Leave);
             // 
             // label10
