@@ -109,12 +109,11 @@ namespace GestionFerreteria
             if (txt_codigo.Text.Trim().Length >= 4)
             {
                 ColorCampos(txt_codigo);
-
             }
             else
             {
                 txt_codigo.BackColor = colorCancel;
-                MessageBox.Show("Debe tener 4 o mas caracteres");
+
             }
   
 
@@ -136,14 +135,29 @@ namespace GestionFerreteria
 
         private void txt_precioProv_Leave(object sender, EventArgs e)
         {
-            //ColorCampos(txt_precioProveedor);
+
+            // hacer el calculo del costo
+
         }
 
         private void txt_descProv_Leave(object sender, EventArgs e)
         {
+            if (!txt_precioProveedor.Text.Trim().Equals("0") && !txt_descProv.Text.Trim().Equals("0"))
+            {
+                if (validarDescuentoProveedor() && validarPrecioLista())
+                {
+                    double costoParaRellenar, auxPrecio;
+                    double descuentoPrecioLista = double.Parse(txt_descProv.Text.Trim());
+                    double precioDeLista = double.Parse(txt_precioProveedor.Text.Trim());
 
-            //ColorCampos(txt_descProv);
-            
+                    auxPrecio = precioDeLista * descuentoPrecioLista / 100;
+
+                    costoParaRellenar = precioDeLista - auxPrecio;
+
+                    txt_costo.Text = costoParaRellenar.ToString();
+                }
+            }
+
         }
 
         private void txt_costo_Leave(object sender, EventArgs e)
@@ -154,7 +168,27 @@ namespace GestionFerreteria
 
         private void txt_porc_Leave(object sender, EventArgs e)
         {
-            ColorCampos(txt_porc);
+            
+            bool auxCalcular =  ColorCampos(txt_porc);
+            if (auxCalcular)
+            {
+                double auxPrecio;
+                double precioFinal;
+             
+                double porcentaje = double.Parse(txt_porc.Text.Trim());
+                double costo = double.Parse(txt_costo.Text.Trim());
+
+                Console.WriteLine(costo+" " + porcentaje);
+
+                auxPrecio = porcentaje * costo / 100;
+
+                precioFinal = auxPrecio + costo;
+                precioFinal = Math.Round(precioFinal);
+
+                Console.WriteLine(precioFinal);
+
+                txt_preciof.Text = precioFinal.ToString();
+            }
 
         }
 
@@ -189,19 +223,21 @@ namespace GestionFerreteria
             }
             return validar;
         }
-        public void ColorCampos(TextBox txtAEvaluar)
+        public bool ColorCampos(TextBox txtAEvaluar)
         {
-            
+            bool salida = false;
             if (txtAEvaluar.Equals(txt_codigo))
             {
                 if (txtAEvaluar.Text.Equals("") || txt_codigo.Text.Trim().Length==0)
                 {
 
                     txtAEvaluar.BackColor = colorCancel;
+                    salida = false;
                 }
                 else
                 {
                     txtAEvaluar.BackColor = colorOk;
+                    salida = true;
                 }
             }
             else if (txtAEvaluar.Equals(txt_costo))
@@ -210,11 +246,12 @@ namespace GestionFerreteria
                 {
                     double aux = double.Parse(txtAEvaluar.Text.Trim());
                     txtAEvaluar.BackColor = colorOk;
+                    salida = true;
                 }
                 catch (Exception)
                 {
                     txtAEvaluar.BackColor = colorCancel;
-
+                    salida = false;
                 }
             }
             else if(txtAEvaluar.Equals(txt_porc))
@@ -223,11 +260,12 @@ namespace GestionFerreteria
                 {
                     double aux = double.Parse(txtAEvaluar.Text.Trim());
                     txtAEvaluar.BackColor = colorOk;
+                    salida = true;
                 }
                 catch (Exception)
                 {
                     txtAEvaluar.BackColor = colorCancel;
-
+                    salida = false;
                 }
             }
             else if (txtAEvaluar.Equals(txt_preciof))
@@ -236,11 +274,12 @@ namespace GestionFerreteria
                 {
                     double aux = double.Parse(txtAEvaluar.Text.Trim());
                     txtAEvaluar.BackColor = colorOk;
+                    salida = true;
                 }
                 catch (Exception)
                 {
                     txtAEvaluar.BackColor = colorCancel;
-
+                    salida = false;
                 }
             }
             else
@@ -249,39 +288,28 @@ namespace GestionFerreteria
                 {
 
                     txtAEvaluar.BackColor = colorCancel;
+                    salida = false;
                 }
                 else
                 {
                     txtAEvaluar.BackColor = colorOk;
+                    salida = true;
                 }
             }
 
-            
+            return salida;
         }
 
         private void txt_precioProveedor_TextChanged(object sender, EventArgs e)
         {
-            if (!txt_precioProveedor.Text.Trim().Equals(""))
-            {
-                try
-                {
-                    double aux;
-                    aux = double.Parse(txt_precioProveedor.Text.Trim());
-                    txt_precioProveedor.BackColor = colorOk;
-                }
-                catch (Exception)
-                {
-                    txt_precioProveedor.BackColor= colorCancel;
-                    
-                }
-            }
-            else
-            {
-                txt_precioProveedor.BackColor =colorCancel;
-            }
+            validarPrecioLista();
         }
 
         private void txt_descProv_TextChanged(object sender, EventArgs e)
+        {
+            validarDescuentoProveedor();
+        }
+        public bool validarDescuentoProveedor()
         {
             if (!txt_descProv.Text.Trim().Equals(""))
             {
@@ -290,17 +318,43 @@ namespace GestionFerreteria
                     double aux;
                     aux = double.Parse(txt_descProv.Text.Trim());
                     txt_descProv.BackColor = colorOk;
+                    return true;
                 }
                 catch (Exception)
                 {
                     txt_descProv.BackColor = colorCancel;
+                    return false;
 
                 }
-                
+
             }
             else
             {
                 txt_descProv.BackColor = colorCancel;
+                return false;
+            }
+        }
+        public bool validarPrecioLista()
+        {
+            if (!txt_precioProveedor.Text.Trim().Equals(""))
+            {
+                try
+                {
+                    double aux;
+                    aux = double.Parse(txt_precioProveedor.Text.Trim());
+                    txt_precioProveedor.BackColor = colorOk;
+                    return true;
+                }
+                catch (Exception)
+                {
+                    txt_precioProveedor.BackColor = colorCancel;
+                    return false;
+                }
+            }
+            else
+            {
+                txt_precioProveedor.BackColor = colorCancel;
+                return false;
             }
         }
     }
