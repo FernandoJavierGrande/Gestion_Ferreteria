@@ -116,6 +116,7 @@ namespace GestionFerreteria
                 int id_aux = Convert.ToInt32(data[0]) + 1;
                 label_nuevoId.Text = id_aux.ToString();
             }
+            txt_codigo.Focus();
         }
 
         private void txt_codigo_Leave(object sender, EventArgs e)
@@ -522,9 +523,5 @@ namespace GestionFerreteria
             txt_StockMin.Clear();
             txt_StockMin.BackColor = Color.White;
         }
-
-        
-
-        
     }
 }
