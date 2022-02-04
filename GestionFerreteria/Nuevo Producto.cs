@@ -28,7 +28,8 @@ namespace GestionFerreteria
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+        private void boton_guardar_Click(object sender, EventArgs e)
         {
             bool validarCampos;
             validarCampos = ValidarCampos();
@@ -42,16 +43,24 @@ namespace GestionFerreteria
 
 
                 bool res = guardar.guardarNuevoProducto(insert);
+                if (res)
+                {
+                    limpiar();
+                }
 
             }
             else
             {
                 MessageBox.Show("bandera = " + validarCampos);
-                
+
             }
-        
-            
         }
+
+        private void boton_limpiar_Click(object sender, EventArgs e)
+        {
+            limpiar();
+        }
+
         public SqlConnection conectar()
         {
             try
@@ -162,6 +171,113 @@ namespace GestionFerreteria
         private void txt_precioProveedor_Leave(object sender, EventArgs e)
         {
             cambiarComaPorPuntoEnLaInterfaz(txt_precioProveedor);
+        }
+        private void txt_codigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                ColorCampos(txt_codigo);
+                txt_nombre.Focus();
+            }
+        }
+
+        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                ColorCampos(txt_nombre);
+                txt_marca.Focus();
+            }
+        }
+
+        private void txt_marca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                ColorCampos(txt_marca);
+                cmb_cat.Focus();
+            }
+        }
+
+        private void txt_desc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                txt_precioProveedor.Focus();
+            }
+        }
+
+        private void cmb_cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                txt_desc.Focus();
+            }
+        }
+
+        private void txt_precioProveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_precioProveedor);
+                txt_descProv.Focus();
+            }
+        }
+
+        private void txt_descProv_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_descProv);
+                txt_costo.Focus();
+            }
+        }
+
+        private void txt_costo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_costo);
+                txt_porc.Focus();
+            }
+        }
+
+        private void txt_porc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_porc);
+                txt_preciof.Focus();
+            }
+        }
+
+        private void txt_preciof_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_preciof);
+                txt_StockMin.Focus();
+            }
+        }
+
+        private void txt_StockMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_StockMin);
+                boton_guardar.Focus();
+            }
         }
 
         private void txt_descProv_Leave(object sender, EventArgs e) //resta el porcentaje de descuento del precio de lista del proveedor
@@ -382,112 +498,33 @@ namespace GestionFerreteria
             }
         }
 
-        private void txt_codigo_KeyPress(object sender, KeyPressEventArgs e)
+        public void limpiar()
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                ColorCampos(txt_codigo);
-                txt_nombre.Focus();
-            }
+            
+            txt_codigo.Clear();
+            txt_codigo.BackColor = Color.White;
+            txt_nombre.Clear();
+            txt_nombre.BackColor = Color.White;
+            txt_marca.Clear();
+            txt_marca.BackColor = Color.White;
+            cmb_cat.SelectedIndex = -1;
+            txt_desc.Clear();
+            txt_precioProveedor.Text = "0";
+            txt_precioProveedor.BackColor = Color.White;
+            txt_descProv.Text = "0";
+            txt_descProv.BackColor = Color.White;
+            txt_costo.Clear();
+            txt_costo.BackColor = Color.White;
+            txt_porc.Clear();
+            txt_porc.BackColor = Color.White;
+            txt_preciof.Clear();
+            txt_preciof.BackColor = Color.White;    
+            txt_StockMin.Clear();
+            txt_StockMin.BackColor = Color.White;
         }
 
-        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                ColorCampos(txt_nombre);
-                txt_marca.Focus();
-            }
-        }
+        
 
-        private void txt_marca_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                ColorCampos(txt_marca);
-                cmb_cat.Focus();
-            }
-        }
-
-        private void txt_desc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                txt_precioProveedor.Focus();
-            }
-        }
-
-        private void cmb_cat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                txt_desc.Focus();
-            }
-        }
-
-        private void txt_precioProveedor_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                validarCamposNumericos(txt_precioProveedor);
-                txt_descProv.Focus();
-            }
-        }
-
-        private void txt_descProv_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                validarCamposNumericos(txt_descProv);
-                txt_costo.Focus();
-            }
-        }
-
-        private void txt_costo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                validarCamposNumericos(txt_costo);
-                txt_porc.Focus();
-            }
-        }
-
-        private void txt_porc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                validarCamposNumericos(txt_porc);
-                txt_preciof.Focus();
-            }
-        }
-
-        private void txt_preciof_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                validarCamposNumericos(txt_preciof);
-                txt_StockMin.Focus();
-            }
-        }
-
-        private void txt_StockMin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                validarCamposNumericos(txt_StockMin);
-                button1.Focus();
-            }
-        }
+        
     }
 }

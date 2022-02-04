@@ -46,12 +46,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label_nuevoId = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.boton_guardar = new System.Windows.Forms.Button();
             this.txt_descProv = new System.Windows.Forms.TextBox();
             this.txt_precioProveedor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.boton_limpiar = new System.Windows.Forms.Button();
             this.txt_StockMin = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -230,18 +230,18 @@
             this.label_nuevoId.TabIndex = 17;
             this.label_nuevoId.Text = "id";
             // 
-            // button1
+            // boton_guardar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(1014, 570);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(258, 182);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.boton_guardar.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.boton_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.boton_guardar.Location = new System.Drawing.Point(1014, 570);
+            this.boton_guardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.boton_guardar.Name = "boton_guardar";
+            this.boton_guardar.Size = new System.Drawing.Size(258, 182);
+            this.boton_guardar.TabIndex = 11;
+            this.boton_guardar.Text = "Guardar";
+            this.boton_guardar.UseVisualStyleBackColor = false;
+            this.boton_guardar.Click += new System.EventHandler(this.boton_guardar_Click);
             // 
             // txt_descProv
             // 
@@ -283,15 +283,16 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Descuento sobre\r\nprecio de lista %\r\n";
             // 
-            // button2
+            // boton_limpiar
             // 
-            this.button2.Location = new System.Drawing.Point(240, 634);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 54);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.boton_limpiar.Location = new System.Drawing.Point(240, 634);
+            this.boton_limpiar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.boton_limpiar.Name = "boton_limpiar";
+            this.boton_limpiar.Size = new System.Drawing.Size(189, 54);
+            this.boton_limpiar.TabIndex = 23;
+            this.boton_limpiar.Text = "Limpiar";
+            this.boton_limpiar.UseVisualStyleBackColor = true;
+            this.boton_limpiar.Click += new System.EventHandler(this.boton_limpiar_Click);
             // 
             // txt_StockMin
             // 
@@ -320,12 +321,12 @@
             this.ClientSize = new System.Drawing.Size(1603, 787);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txt_StockMin);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.boton_limpiar);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txt_precioProveedor);
             this.Controls.Add(this.txt_descProv);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.boton_guardar);
             this.Controls.Add(this.label_nuevoId);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -376,12 +377,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label_nuevoId;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button boton_guardar;
         private System.Windows.Forms.TextBox txt_descProv;
         private System.Windows.Forms.TextBox txt_precioProveedor;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button boton_limpiar;
         private System.Windows.Forms.TextBox txt_StockMin;
         private System.Windows.Forms.Label label12;
     }
