@@ -32,9 +32,11 @@ namespace GestionFerreteria.clases
                 conexion.Close();
                 return true;
         }
-            catch (Exception)
+            catch (Exception E)
             {
-                System.Windows.Forms.MessageBox.Show("Error al guardar el producto. Intente nuevamente");
+                System.Windows.Forms.MessageBox.Show("Error al guardar el producto. Intente nuevamente ");
+                Console.WriteLine(E);
+                conexion.Close();
                 return false;
             }
 

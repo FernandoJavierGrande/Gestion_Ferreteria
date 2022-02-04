@@ -52,6 +52,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.txt_StockMin = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_codigo
@@ -61,6 +63,7 @@
             this.txt_codigo.Name = "txt_codigo";
             this.txt_codigo.Size = new System.Drawing.Size(146, 27);
             this.txt_codigo.TabIndex = 0;
+            this.txt_codigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_codigo_KeyPress);
             this.txt_codigo.Leave += new System.EventHandler(this.txt_codigo_Leave);
             // 
             // txt_nombre
@@ -70,6 +73,7 @@
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(176, 27);
             this.txt_nombre.TabIndex = 1;
+            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombre_KeyPress);
             this.txt_nombre.Leave += new System.EventHandler(this.txt_nombre_Leave);
             // 
             // txt_marca
@@ -79,26 +83,30 @@
             this.txt_marca.Name = "txt_marca";
             this.txt_marca.Size = new System.Drawing.Size(142, 27);
             this.txt_marca.TabIndex = 2;
+            this.txt_marca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_marca_KeyPress);
             this.txt_marca.Leave += new System.EventHandler(this.txt_marca_Leave);
             // 
             // txt_desc
             // 
-            this.txt_desc.Location = new System.Drawing.Point(1110, 184);
+            this.txt_desc.Location = new System.Drawing.Point(1001, 184);
             this.txt_desc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_desc.Multiline = true;
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(252, 193);
             this.txt_desc.TabIndex = 4;
             this.txt_desc.Text = "ALJSBDSKSKS555AAsddd";
+            this.txt_desc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_desc_KeyPress);
             // 
             // cmb_cat
             // 
+            this.cmb_cat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_cat.FormattingEnabled = true;
             this.cmb_cat.Location = new System.Drawing.Point(759, 184);
             this.cmb_cat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmb_cat.Name = "cmb_cat";
             this.cmb_cat.Size = new System.Drawing.Size(151, 28);
             this.cmb_cat.TabIndex = 3;
+            this.cmb_cat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb_cat_KeyPress);
             // 
             // txt_costo
             // 
@@ -107,15 +115,17 @@
             this.txt_costo.Name = "txt_costo";
             this.txt_costo.Size = new System.Drawing.Size(94, 27);
             this.txt_costo.TabIndex = 7;
+            this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
             this.txt_costo.Leave += new System.EventHandler(this.txt_costo_Leave);
             // 
             // txt_porc
             // 
-            this.txt_porc.Location = new System.Drawing.Point(636, 448);
+            this.txt_porc.Location = new System.Drawing.Point(646, 446);
             this.txt_porc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_porc.Name = "txt_porc";
-            this.txt_porc.Size = new System.Drawing.Size(74, 27);
+            this.txt_porc.Size = new System.Drawing.Size(58, 27);
             this.txt_porc.TabIndex = 8;
+            this.txt_porc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_porc_KeyPress);
             this.txt_porc.Leave += new System.EventHandler(this.txt_porc_Leave);
             // 
             // txt_preciof
@@ -125,6 +135,7 @@
             this.txt_preciof.Name = "txt_preciof";
             this.txt_preciof.Size = new System.Drawing.Size(124, 27);
             this.txt_preciof.TabIndex = 9;
+            this.txt_preciof.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_preciof_KeyPress);
             this.txt_preciof.Leave += new System.EventHandler(this.txt_preciof_Leave);
             // 
             // label1
@@ -157,7 +168,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1186, 160);
+            this.label4.Location = new System.Drawing.Point(1075, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 20);
             this.label4.TabIndex = 11;
@@ -223,24 +234,25 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(1104, 447);
+            this.button1.Location = new System.Drawing.Point(1014, 570);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(258, 182);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 11;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txt_descProv
             // 
-            this.txt_descProv.Location = new System.Drawing.Point(278, 447);
+            this.txt_descProv.Location = new System.Drawing.Point(308, 446);
             this.txt_descProv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_descProv.Name = "txt_descProv";
-            this.txt_descProv.Size = new System.Drawing.Size(72, 27);
+            this.txt_descProv.Size = new System.Drawing.Size(42, 27);
             this.txt_descProv.TabIndex = 6;
             this.txt_descProv.Text = "0";
             this.txt_descProv.TextChanged += new System.EventHandler(this.txt_descProv_TextChanged);
+            this.txt_descProv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_descProv_KeyPress);
             this.txt_descProv.Leave += new System.EventHandler(this.txt_descProv_Leave);
             // 
             // txt_precioProveedor
@@ -252,7 +264,8 @@
             this.txt_precioProveedor.TabIndex = 5;
             this.txt_precioProveedor.Text = "0";
             this.txt_precioProveedor.TextChanged += new System.EventHandler(this.txt_precioProveedor_TextChanged);
-            this.txt_precioProveedor.Leave += new System.EventHandler(this.txt_precioProv_Leave);
+            this.txt_precioProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precioProveedor_KeyPress);
+            this.txt_precioProveedor.Leave += new System.EventHandler(this.txt_precioProveedor_Leave);
             // 
             // label10
             // 
@@ -264,7 +277,7 @@
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(242, 391);
+            this.label11.Location = new System.Drawing.Point(262, 389);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(158, 53);
             this.label11.TabIndex = 22;
@@ -272,13 +285,31 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(807, 633);
+            this.button2.Location = new System.Drawing.Point(240, 634);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(189, 54);
             this.button2.TabIndex = 23;
             this.button2.Text = "Limpiar";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // txt_StockMin
+            // 
+            this.txt_StockMin.Location = new System.Drawing.Point(1093, 448);
+            this.txt_StockMin.Name = "txt_StockMin";
+            this.txt_StockMin.Size = new System.Drawing.Size(45, 27);
+            this.txt_StockMin.TabIndex = 10;
+            this.txt_StockMin.TextChanged += new System.EventHandler(this.txt_StockMin_TextChanged);
+            this.txt_StockMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_StockMin_KeyPress);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1064, 422);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(110, 20);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Stock mínimo";
             // 
             // agregarNuevoProducto
             // 
@@ -287,6 +318,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1603, 787);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txt_StockMin);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -349,5 +382,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txt_StockMin;
+        private System.Windows.Forms.Label label12;
     }
 }

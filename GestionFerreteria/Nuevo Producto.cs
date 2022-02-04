@@ -3,6 +3,12 @@ using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Globalization;
+
+
+// sacar los metodos que calculan en otra clase,
+
+// sacar los metodos que validan en otra clase
 
 
 namespace GestionFerreteria
@@ -64,6 +70,7 @@ namespace GestionFerreteria
         }
         private void agregarNuevoProducto_Load(object sender, EventArgs e)
         {
+            
             conexion = conectar();
             if (conexion != null)
             {
@@ -118,55 +125,83 @@ namespace GestionFerreteria
   
 
         }
+        private void txt_precioProveedor_TextChanged(object sender, EventArgs e)
+        {
+            validarCamposNumericos(txt_precioProveedor);
+        }
+
+        private void txt_descProv_TextChanged(object sender, EventArgs e)
+        {
+            validarCamposNumericos(txt_descProv);
+        }
+        private void txt_StockMin_TextChanged(object sender, EventArgs e)
+        {
+            validarCamposNumericos(txt_StockMin);
+        }
 
         private void txt_nombre_Leave(object sender, EventArgs e)
         {
-
             ColorCampos(txt_nombre);
-            
         }
 
         private void txt_marca_Leave(object sender, EventArgs e)
         {
-
             ColorCampos(txt_marca);
-
         }
-
-        private void txt_precioProv_Leave(object sender, EventArgs e)
+        private void txt_costo_Leave(object sender, EventArgs e)
+        {
+            ColorCampos(txt_costo);
+            cambiarComaPorPuntoEnLaInterfaz(txt_costo);
+        }
+        private void txt_preciof_Leave(object sender, EventArgs e)
         {
 
-            // hacer el calculo del costo
-
+            ColorCampos(txt_preciof);
+            cambiarComaPorPuntoEnLaInterfaz(txt_preciof);
+        }
+        private void txt_precioProveedor_Leave(object sender, EventArgs e)
+        {
+            cambiarComaPorPuntoEnLaInterfaz(txt_precioProveedor);
         }
 
-        private void txt_descProv_Leave(object sender, EventArgs e)
+        private void txt_descProv_Leave(object sender, EventArgs e) //resta el porcentaje de descuento del precio de lista del proveedor
         {
             if (!txt_precioProveedor.Text.Trim().Equals("0") && !txt_descProv.Text.Trim().Equals("0"))
             {
-                if (validarDescuentoProveedor() && validarPrecioLista())
+                if (validarCamposNumericos(txt_descProv) && validarCamposNumericos(txt_precioProveedor))
                 {
-                    double costoParaRellenar, auxPrecio;
-                    double descuentoPrecioLista = double.Parse(txt_descProv.Text.Trim());
-                    double precioDeLista = double.Parse(txt_precioProveedor.Text.Trim());
 
+
+                    double costoParaRellenar, auxPrecio;
+                    string descuento_temporal = txt_descProv.Text.Trim(), precioLista_temporal = txt_precioProveedor.Text.Trim();
+                    double descuentoPrecioLista;
+                    double precioDeLista;
+
+
+                    if (precioLista_temporal.Contains("."))  // si encuentra un punto lo reemplaza por una coma
+                    {
+                        precioLista_temporal = precioLista_temporal.Replace(".", ",");
+                    }
+                    precioDeLista = double.Parse(precioLista_temporal);
+
+                    if (descuento_temporal.Contains("."))      // si encuentra un punto lo reemplaza por una coma
+                    {
+                        descuento_temporal = descuento_temporal.Replace(".", ",");
+                    }
+                    descuentoPrecioLista = double.Parse(descuento_temporal);
+                   
                     auxPrecio = precioDeLista * descuentoPrecioLista / 100;
 
                     costoParaRellenar = precioDeLista - auxPrecio;
 
                     txt_costo.Text = costoParaRellenar.ToString();
+
+                    cambiarComaPorPuntoEnLaInterfaz(txt_descProv);
                 }
             }
 
         }
-
-        private void txt_costo_Leave(object sender, EventArgs e)
-        {
-            ColorCampos(txt_costo); 
-
-        }
-
-        private void txt_porc_Leave(object sender, EventArgs e)
+        private void txt_porc_Leave(object sender, EventArgs e) // suma el porcentaje especificado
         {
             
             bool auxCalcular =  ColorCampos(txt_porc);
@@ -174,11 +209,23 @@ namespace GestionFerreteria
             {
                 double auxPrecio;
                 double precioFinal;
-             
-                double porcentaje = double.Parse(txt_porc.Text.Trim());
-                double costo = double.Parse(txt_costo.Text.Trim());
+                string porcentaje_temporal = txt_porc.Text.Trim();
+                string costo_temporal = txt_costo.Text.Trim();
 
-                Console.WriteLine(costo+" " + porcentaje);
+
+                if (costo_temporal.Contains("."))
+                {
+                    costo_temporal = costo_temporal.Replace(".",",");
+                }
+                double costo = double.Parse(costo_temporal);
+
+                if (porcentaje_temporal.Contains("."))
+                {
+                    porcentaje_temporal = porcentaje_temporal.Replace(".", ",");
+                }
+
+                double porcentaje = double.Parse(porcentaje_temporal);
+
 
                 auxPrecio = porcentaje * costo / 100;
 
@@ -188,16 +235,12 @@ namespace GestionFerreteria
                 Console.WriteLine(precioFinal);
 
                 txt_preciof.Text = precioFinal.ToString();
+
+                cambiarComaPorPuntoEnLaInterfaz(txt_porc);
             }
 
         }
 
-        private void txt_preciof_Leave(object sender, EventArgs e)
-        {
-
-            ColorCampos(txt_preciof);
-
-        }
         public bool ValidarCampos()
         {
             TextBox[] arrayTxt = { txt_codigo, txt_nombre, txt_marca, txt_costo, txt_porc, txt_preciof };
@@ -223,12 +266,38 @@ namespace GestionFerreteria
             }
             return validar;
         }
+        
+        public bool validarCamposNumericos(TextBox txt)
+        {
+            if (!txt.Text.Trim().Equals(""))
+            {
+                try
+                {
+                    double aux;
+                    aux = double.Parse(txt.Text.Trim());
+
+                    txt.BackColor = colorOk;
+                    return true;
+                }
+                catch (Exception)
+                {
+                    txt.BackColor = colorCancel;
+                    return false;
+                }
+            }
+            else
+            {
+                txt.BackColor = colorCancel;
+                return false;
+            }
+
+        }
         public bool ColorCampos(TextBox txtAEvaluar)
         {
             bool salida = false;
             if (txtAEvaluar.Equals(txt_codigo))
             {
-                if (txtAEvaluar.Text.Equals("") || txt_codigo.Text.Trim().Length==0)
+                if (txtAEvaluar.Text.Equals("") || txt_codigo.Text.Trim().Length == 0)
                 {
 
                     txtAEvaluar.BackColor = colorCancel;
@@ -254,7 +323,7 @@ namespace GestionFerreteria
                     salida = false;
                 }
             }
-            else if(txtAEvaluar.Equals(txt_porc))
+            else if (txtAEvaluar.Equals(txt_porc))
             {
                 try
                 {
@@ -299,62 +368,125 @@ namespace GestionFerreteria
 
             return salida;
         }
-
-        private void txt_precioProveedor_TextChanged(object sender, EventArgs e)
+        public void cambiarComaPorPuntoEnLaInterfaz(TextBox txt)
         {
-            validarPrecioLista();
-        }
-
-        private void txt_descProv_TextChanged(object sender, EventArgs e)
-        {
-            validarDescuentoProveedor();
-        }
-        public bool validarDescuentoProveedor()
-        {
-            if (!txt_descProv.Text.Trim().Equals(""))
+            if (txt.Text.Contains(","))
             {
-                try
+                string texto_Temp = txt.Text.Trim();
+                texto_Temp = texto_Temp.Replace(",",".");
+                txt.Text = texto_Temp;
+                if (txt.Text.Contains(","))
                 {
-                    double aux;
-                    aux = double.Parse(txt_descProv.Text.Trim());
-                    txt_descProv.BackColor = colorOk;
-                    return true;
-                }
-                catch (Exception)
-                {
-                    txt_descProv.BackColor = colorCancel;
-                    return false;
-
-                }
-
-            }
-            else
-            {
-                txt_descProv.BackColor = colorCancel;
-                return false;
-            }
-        }
-        public bool validarPrecioLista()
-        {
-            if (!txt_precioProveedor.Text.Trim().Equals(""))
-            {
-                try
-                {
-                    double aux;
-                    aux = double.Parse(txt_precioProveedor.Text.Trim());
-                    txt_precioProveedor.BackColor = colorOk;
-                    return true;
-                }
-                catch (Exception)
-                {
-                    txt_precioProveedor.BackColor = colorCancel;
-                    return false;
+                    Console.WriteLine("hay una coma " + texto_Temp);
                 }
             }
-            else
+        }
+
+        private void txt_codigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                txt_precioProveedor.BackColor = colorCancel;
-                return false;
+                e.Handled = true;
+                ColorCampos(txt_codigo);
+                txt_nombre.Focus();
+            }
+        }
+
+        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                ColorCampos(txt_nombre);
+                txt_marca.Focus();
+            }
+        }
+
+        private void txt_marca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                ColorCampos(txt_marca);
+                cmb_cat.Focus();
+            }
+        }
+
+        private void txt_desc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                txt_precioProveedor.Focus();
+            }
+        }
+
+        private void cmb_cat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                txt_desc.Focus();
+            }
+        }
+
+        private void txt_precioProveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_precioProveedor);
+                txt_descProv.Focus();
+            }
+        }
+
+        private void txt_descProv_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_descProv);
+                txt_costo.Focus();
+            }
+        }
+
+        private void txt_costo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_costo);
+                txt_porc.Focus();
+            }
+        }
+
+        private void txt_porc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_porc);
+                txt_preciof.Focus();
+            }
+        }
+
+        private void txt_preciof_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_preciof);
+                txt_StockMin.Focus();
+            }
+        }
+
+        private void txt_StockMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_StockMin);
+                button1.Focus();
             }
         }
     }
