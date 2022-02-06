@@ -59,20 +59,22 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cmb_unidad = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_StockMin = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label_fecha = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cmb_unidad = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_codigo
@@ -112,7 +114,7 @@
             this.txt_desc.Multiline = true;
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(231, 112);
-            this.txt_desc.TabIndex = 4;
+            this.txt_desc.TabIndex = 5;
             this.txt_desc.Text = "ALJSBDSKSKS555AAsddd";
             this.txt_desc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_desc_KeyPress);
             // 
@@ -133,7 +135,7 @@
             this.txt_costo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_costo.Name = "txt_costo";
             this.txt_costo.Size = new System.Drawing.Size(94, 27);
-            this.txt_costo.TabIndex = 7;
+            this.txt_costo.TabIndex = 8;
             this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
             this.txt_costo.Leave += new System.EventHandler(this.txt_costo_Leave);
             // 
@@ -143,7 +145,7 @@
             this.txt_porc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_porc.Name = "txt_porc";
             this.txt_porc.Size = new System.Drawing.Size(58, 27);
-            this.txt_porc.TabIndex = 8;
+            this.txt_porc.TabIndex = 9;
             this.txt_porc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_porc_KeyPress);
             this.txt_porc.Leave += new System.EventHandler(this.txt_porc_Leave);
             // 
@@ -153,7 +155,7 @@
             this.txt_preciof.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_preciof.Name = "txt_preciof";
             this.txt_preciof.Size = new System.Drawing.Size(124, 27);
-            this.txt_preciof.TabIndex = 9;
+            this.txt_preciof.TabIndex = 10;
             this.txt_preciof.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_preciof_KeyPress);
             this.txt_preciof.Leave += new System.EventHandler(this.txt_preciof_Leave);
             // 
@@ -256,7 +258,7 @@
             this.boton_guardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boton_guardar.Name = "boton_guardar";
             this.boton_guardar.Size = new System.Drawing.Size(429, 125);
-            this.boton_guardar.TabIndex = 11;
+            this.boton_guardar.TabIndex = 13;
             this.boton_guardar.Text = "Guardar";
             this.boton_guardar.UseVisualStyleBackColor = false;
             this.boton_guardar.Click += new System.EventHandler(this.boton_guardar_Click);
@@ -267,7 +269,7 @@
             this.txt_descProv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_descProv.Name = "txt_descProv";
             this.txt_descProv.Size = new System.Drawing.Size(42, 27);
-            this.txt_descProv.TabIndex = 6;
+            this.txt_descProv.TabIndex = 7;
             this.txt_descProv.Text = "0";
             this.txt_descProv.TextChanged += new System.EventHandler(this.txt_descProv_TextChanged);
             this.txt_descProv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_descProv_KeyPress);
@@ -279,7 +281,7 @@
             this.txt_precioProveedor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_precioProveedor.Name = "txt_precioProveedor";
             this.txt_precioProveedor.Size = new System.Drawing.Size(124, 27);
-            this.txt_precioProveedor.TabIndex = 5;
+            this.txt_precioProveedor.TabIndex = 6;
             this.txt_precioProveedor.Text = "0";
             this.txt_precioProveedor.TextChanged += new System.EventHandler(this.txt_precioProveedor_TextChanged);
             this.txt_precioProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precioProveedor_KeyPress);
@@ -390,6 +392,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del producto";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(899, 51);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(143, 20);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Unidad de medida";
+            // 
+            // cmb_unidad
+            // 
+            this.cmb_unidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_unidad.FormattingEnabled = true;
+            this.cmb_unidad.Location = new System.Drawing.Point(915, 75);
+            this.cmb_unidad.Name = "cmb_unidad";
+            this.cmb_unidad.Size = new System.Drawing.Size(116, 28);
+            this.cmb_unidad.TabIndex = 4;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label15);
@@ -408,7 +428,7 @@
             this.txt_StockMin.Location = new System.Drawing.Point(37, 91);
             this.txt_StockMin.Name = "txt_StockMin";
             this.txt_StockMin.Size = new System.Drawing.Size(45, 27);
-            this.txt_StockMin.TabIndex = 10;
+            this.txt_StockMin.TabIndex = 11;
             this.txt_StockMin.TextChanged += new System.EventHandler(this.txt_StockMin_TextChanged);
             this.txt_StockMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_StockMin_KeyPress);
             // 
@@ -425,6 +445,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stock y proveedor";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(201, 91);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.TabIndex = 12;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -433,14 +461,6 @@
             this.label14.Size = new System.Drawing.Size(85, 20);
             this.label14.TabIndex = 26;
             this.label14.Text = "Proveedor";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(201, 91);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 27;
             // 
             // groupBox4
             // 
@@ -454,12 +474,22 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label_fecha);
             this.groupBox5.Location = new System.Drawing.Point(821, 51);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(353, 48);
             this.groupBox5.TabIndex = 36;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Fecha";
+            // 
+            // label_fecha
+            // 
+            this.label_fecha.AutoSize = true;
+            this.label_fecha.Location = new System.Drawing.Point(88, 17);
+            this.label_fecha.Name = "label_fecha";
+            this.label_fecha.Size = new System.Drawing.Size(50, 20);
+            this.label_fecha.TabIndex = 0;
+            this.label_fecha.Text = "fecha";
             // 
             // groupBox6
             // 
@@ -469,24 +499,6 @@
             this.groupBox6.TabIndex = 37;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Logo";
-            // 
-            // cmb_unidad
-            // 
-            this.cmb_unidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_unidad.FormattingEnabled = true;
-            this.cmb_unidad.Location = new System.Drawing.Point(915, 75);
-            this.cmb_unidad.Name = "cmb_unidad";
-            this.cmb_unidad.Size = new System.Drawing.Size(116, 28);
-            this.cmb_unidad.TabIndex = 13;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(899, 51);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(143, 20);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "Unidad de medida";
             // 
             // agregarNuevoProducto
             // 
@@ -528,6 +540,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,5 +590,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmb_unidad;
+        private System.Windows.Forms.Label label_fecha;
     }
 }

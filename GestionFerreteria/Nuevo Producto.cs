@@ -39,7 +39,7 @@ namespace GestionFerreteria
 
                 GuardarProducto guardar = new GuardarProducto();
 
-                string insert = "insert into Productos ([codigo],[nombre],[marca],[descripcion],[categoria],[preciolista],[descuentolista], [preciobruto],[porcentaje],[preciofinal]) values ('" + txt_codigo.Text + "','" + txt_nombre.Text + "','" + txt_marca.Text + "','" + txt_desc.Text + "','" + cmb_cat.SelectedIndex.ToString() + "','" + double.Parse(txt_precioProveedor.Text) + "','" + double.Parse(txt_descProv.Text) + "','" + double.Parse(txt_costo.Text) + "','" + double.Parse(txt_porc.Text) + "','" + double.Parse(txt_preciof.Text) + "')";
+                string insert = "insert into Productos ([codigo],[nombre],[marca],[descripcion],[categoria],[preciolista],[descuentolista], [preciobruto],[porcentaje],[preciofinal]) values ('" + txt_codigo.Text.ToUpper() + "','" + txt_nombre.Text.ToUpper() + "','" + txt_marca.Text.ToUpper() + "','" + txt_desc.Text.ToUpper() + "','" + cmb_cat.SelectedIndex.ToString().ToUpper() + "','" + double.Parse(txt_precioProveedor.Text) + "','" + double.Parse(txt_descProv.Text) + "','" + double.Parse(txt_costo.Text) + "','" + double.Parse(txt_porc.Text) + "','" + double.Parse(txt_preciof.Text) + "')";
 
 
                 bool res = guardar.guardarNuevoProducto(insert);
@@ -117,6 +117,7 @@ namespace GestionFerreteria
                 label_nuevoId.Text = id_aux.ToString();
             }
             txt_codigo.Focus();
+            label_fecha.Text = DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy");
         }
 
         private void txt_codigo_Leave(object sender, EventArgs e)
@@ -523,5 +524,6 @@ namespace GestionFerreteria
             txt_StockMin.Clear();
             txt_StockMin.BackColor = Color.White;
         }
+
     }
 }
