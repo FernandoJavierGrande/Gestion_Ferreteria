@@ -33,48 +33,50 @@
             this.txt_marca = new System.Windows.Forms.TextBox();
             this.txt_desc = new System.Windows.Forms.TextBox();
             this.cmb_cat = new System.Windows.Forms.ComboBox();
-            this.txt_costo = new System.Windows.Forms.TextBox();
-            this.txt_porc = new System.Windows.Forms.TextBox();
-            this.txt_preciof = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label_nuevoId = new System.Windows.Forms.Label();
             this.boton_guardar = new System.Windows.Forms.Button();
-            this.txt_descProv = new System.Windows.Forms.TextBox();
-            this.txt_precioProveedor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.boton_limpiar = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cmb_unidad = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_StockMin = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txt_stock = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cmb_proveedor = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label_fecha = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txt_preciof = new System.Windows.Forms.TextBox();
+            this.txt_porc = new System.Windows.Forms.TextBox();
+            this.txt_costo = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_descProv = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txt_precioProveedor = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt_codigo
@@ -99,7 +101,7 @@
             // 
             // txt_marca
             // 
-            this.txt_marca.Location = new System.Drawing.Point(503, 75);
+            this.txt_marca.Location = new System.Drawing.Point(498, 75);
             this.txt_marca.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_marca.Name = "txt_marca";
             this.txt_marca.Size = new System.Drawing.Size(142, 27);
@@ -113,7 +115,7 @@
             this.txt_desc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_desc.Multiline = true;
             this.txt_desc.Name = "txt_desc";
-            this.txt_desc.Size = new System.Drawing.Size(231, 112);
+            this.txt_desc.Size = new System.Drawing.Size(231, 88);
             this.txt_desc.TabIndex = 5;
             this.txt_desc.Text = "ALJSBDSKSKS555AAsddd";
             this.txt_desc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_desc_KeyPress);
@@ -128,36 +130,6 @@
             this.cmb_cat.Size = new System.Drawing.Size(151, 28);
             this.cmb_cat.TabIndex = 3;
             this.cmb_cat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb_cat_KeyPress);
-            // 
-            // txt_costo
-            // 
-            this.txt_costo.Location = new System.Drawing.Point(421, 447);
-            this.txt_costo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_costo.Name = "txt_costo";
-            this.txt_costo.Size = new System.Drawing.Size(94, 27);
-            this.txt_costo.TabIndex = 8;
-            this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
-            this.txt_costo.Leave += new System.EventHandler(this.txt_costo_Leave);
-            // 
-            // txt_porc
-            // 
-            this.txt_porc.Location = new System.Drawing.Point(546, 94);
-            this.txt_porc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_porc.Name = "txt_porc";
-            this.txt_porc.Size = new System.Drawing.Size(58, 27);
-            this.txt_porc.TabIndex = 9;
-            this.txt_porc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_porc_KeyPress);
-            this.txt_porc.Leave += new System.EventHandler(this.txt_porc_Leave);
-            // 
-            // txt_preciof
-            // 
-            this.txt_preciof.Location = new System.Drawing.Point(681, 93);
-            this.txt_preciof.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_preciof.Name = "txt_preciof";
-            this.txt_preciof.Size = new System.Drawing.Size(124, 27);
-            this.txt_preciof.TabIndex = 10;
-            this.txt_preciof.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_preciof_KeyPress);
-            this.txt_preciof.Leave += new System.EventHandler(this.txt_preciof_Leave);
             // 
             // label1
             // 
@@ -213,15 +185,6 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Costo";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(525, 70);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 20);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Porcentaje";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -258,34 +221,10 @@
             this.boton_guardar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boton_guardar.Name = "boton_guardar";
             this.boton_guardar.Size = new System.Drawing.Size(429, 125);
-            this.boton_guardar.TabIndex = 13;
+            this.boton_guardar.TabIndex = 14;
             this.boton_guardar.Text = "Guardar";
             this.boton_guardar.UseVisualStyleBackColor = false;
             this.boton_guardar.Click += new System.EventHandler(this.boton_guardar_Click);
-            // 
-            // txt_descProv
-            // 
-            this.txt_descProv.Location = new System.Drawing.Point(285, 446);
-            this.txt_descProv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_descProv.Name = "txt_descProv";
-            this.txt_descProv.Size = new System.Drawing.Size(42, 27);
-            this.txt_descProv.TabIndex = 7;
-            this.txt_descProv.Text = "0";
-            this.txt_descProv.TextChanged += new System.EventHandler(this.txt_descProv_TextChanged);
-            this.txt_descProv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_descProv_KeyPress);
-            this.txt_descProv.Leave += new System.EventHandler(this.txt_descProv_Leave);
-            // 
-            // txt_precioProveedor
-            // 
-            this.txt_precioProveedor.Location = new System.Drawing.Point(78, 446);
-            this.txt_precioProveedor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_precioProveedor.Name = "txt_precioProveedor";
-            this.txt_precioProveedor.Size = new System.Drawing.Size(124, 27);
-            this.txt_precioProveedor.TabIndex = 6;
-            this.txt_precioProveedor.Text = "0";
-            this.txt_precioProveedor.TextChanged += new System.EventHandler(this.txt_precioProveedor_TextChanged);
-            this.txt_precioProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precioProveedor_KeyPress);
-            this.txt_precioProveedor.Leave += new System.EventHandler(this.txt_precioProveedor_Leave);
             // 
             // label10
             // 
@@ -310,7 +249,7 @@
             this.boton_limpiar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.boton_limpiar.Name = "boton_limpiar";
             this.boton_limpiar.Size = new System.Drawing.Size(189, 54);
-            this.boton_limpiar.TabIndex = 23;
+            this.boton_limpiar.TabIndex = 15;
             this.boton_limpiar.Text = "Limpiar";
             this.boton_limpiar.UseVisualStyleBackColor = true;
             this.boton_limpiar.Click += new System.EventHandler(this.boton_limpiar_Click);
@@ -318,7 +257,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 68);
+            this.label12.Location = new System.Drawing.Point(6, 67);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 20);
             this.label12.TabIndex = 25;
@@ -332,15 +271,6 @@
             this.label13.Size = new System.Drawing.Size(18, 20);
             this.label13.TabIndex = 26;
             this.label13.Text = "$";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(516, 98);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(24, 20);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "%";
             // 
             // label16
             // 
@@ -409,23 +339,11 @@
             this.cmb_unidad.Name = "cmb_unidad";
             this.cmb_unidad.Size = new System.Drawing.Size(116, 28);
             this.cmb_unidad.TabIndex = 4;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txt_porc);
-            this.groupBox2.Controls.Add(this.txt_preciof);
-            this.groupBox2.Location = new System.Drawing.Point(49, 354);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(869, 175);
-            this.groupBox2.TabIndex = 33;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Precio";
+            this.cmb_unidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb_unidad_KeyPress);
             // 
             // txt_StockMin
             // 
-            this.txt_StockMin.Location = new System.Drawing.Point(37, 91);
+            this.txt_StockMin.Location = new System.Drawing.Point(32, 90);
             this.txt_StockMin.Name = "txt_StockMin";
             this.txt_StockMin.Size = new System.Drawing.Size(45, 27);
             this.txt_StockMin.TabIndex = 11;
@@ -434,29 +352,50 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.txt_stock);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.cmb_proveedor);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.txt_StockMin);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(975, 354);
+            this.groupBox3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.groupBox3.Location = new System.Drawing.Point(952, 354);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 175);
+            this.groupBox3.Size = new System.Drawing.Size(437, 175);
             this.groupBox3.TabIndex = 34;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stock y proveedor";
             // 
-            // comboBox1
+            // txt_stock
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(201, 91);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 12;
+            this.txt_stock.Location = new System.Drawing.Point(167, 88);
+            this.txt_stock.Name = "txt_stock";
+            this.txt_stock.Size = new System.Drawing.Size(51, 27);
+            this.txt_stock.TabIndex = 12;
+            this.txt_stock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_stock_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(167, 70);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 20);
+            this.label20.TabIndex = 27;
+            this.label20.Text = "Stock";
+            // 
+            // cmb_proveedor
+            // 
+            this.cmb_proveedor.FormattingEnabled = true;
+            this.cmb_proveedor.Location = new System.Drawing.Point(276, 91);
+            this.cmb_proveedor.Name = "cmb_proveedor";
+            this.cmb_proveedor.Size = new System.Drawing.Size(121, 28);
+            this.cmb_proveedor.TabIndex = 13;
+            this.cmb_proveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb_proveedor_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(211, 68);
+            this.label14.Location = new System.Drawing.Point(294, 68);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(85, 20);
             this.label14.TabIndex = 26;
@@ -500,6 +439,95 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Logo";
             // 
+            // txt_preciof
+            // 
+            this.txt_preciof.Location = new System.Drawing.Point(681, 93);
+            this.txt_preciof.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_preciof.Name = "txt_preciof";
+            this.txt_preciof.Size = new System.Drawing.Size(124, 27);
+            this.txt_preciof.TabIndex = 10;
+            this.txt_preciof.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_preciof_KeyPress);
+            this.txt_preciof.Leave += new System.EventHandler(this.txt_preciof_Leave);
+            // 
+            // txt_porc
+            // 
+            this.txt_porc.Location = new System.Drawing.Point(546, 94);
+            this.txt_porc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_porc.Name = "txt_porc";
+            this.txt_porc.Size = new System.Drawing.Size(58, 27);
+            this.txt_porc.TabIndex = 9;
+            this.txt_porc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_porc_KeyPress);
+            this.txt_porc.Leave += new System.EventHandler(this.txt_porc_Leave);
+            // 
+            // txt_costo
+            // 
+            this.txt_costo.Location = new System.Drawing.Point(377, 95);
+            this.txt_costo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_costo.Name = "txt_costo";
+            this.txt_costo.Size = new System.Drawing.Size(94, 27);
+            this.txt_costo.TabIndex = 8;
+            this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
+            this.txt_costo.Leave += new System.EventHandler(this.txt_costo_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(525, 70);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Porcentaje";
+            // 
+            // txt_descProv
+            // 
+            this.txt_descProv.Location = new System.Drawing.Point(236, 95);
+            this.txt_descProv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_descProv.Name = "txt_descProv";
+            this.txt_descProv.Size = new System.Drawing.Size(42, 27);
+            this.txt_descProv.TabIndex = 7;
+            this.txt_descProv.Text = "0";
+            this.txt_descProv.TextChanged += new System.EventHandler(this.txt_descProv_TextChanged);
+            this.txt_descProv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_descProv_KeyPress);
+            this.txt_descProv.Leave += new System.EventHandler(this.txt_descProv_Leave);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(516, 98);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(24, 20);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "%";
+            // 
+            // txt_precioProveedor
+            // 
+            this.txt_precioProveedor.Location = new System.Drawing.Point(29, 95);
+            this.txt_precioProveedor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_precioProveedor.Name = "txt_precioProveedor";
+            this.txt_precioProveedor.Size = new System.Drawing.Size(124, 27);
+            this.txt_precioProveedor.TabIndex = 6;
+            this.txt_precioProveedor.Text = "0";
+            this.txt_precioProveedor.TextChanged += new System.EventHandler(this.txt_precioProveedor_TextChanged);
+            this.txt_precioProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_precioProveedor_KeyPress);
+            this.txt_precioProveedor.Leave += new System.EventHandler(this.txt_precioProveedor_Leave);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txt_precioProveedor);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txt_descProv);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txt_costo);
+            this.groupBox2.Controls.Add(this.txt_porc);
+            this.groupBox2.Controls.Add(this.txt_preciof);
+            this.groupBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.groupBox2.Location = new System.Drawing.Point(49, 354);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(869, 175);
+            this.groupBox2.TabIndex = 33;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Precio";
+            // 
             // agregarNuevoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -516,16 +544,13 @@
             this.Controls.Add(this.boton_limpiar);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txt_precioProveedor);
-            this.Controls.Add(this.txt_descProv);
             this.Controls.Add(this.boton_guardar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_costo);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "agregarNuevoProducto";
@@ -535,13 +560,13 @@
             this.Load += new System.EventHandler(this.agregarNuevoProducto_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -554,36 +579,28 @@
         private System.Windows.Forms.TextBox txt_marca;
         private System.Windows.Forms.TextBox txt_desc;
         private System.Windows.Forms.ComboBox cmb_cat;
-        private System.Windows.Forms.TextBox txt_costo;
-        private System.Windows.Forms.TextBox txt_porc;
-        private System.Windows.Forms.TextBox txt_preciof;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label_nuevoId;
         private System.Windows.Forms.Button boton_guardar;
-        private System.Windows.Forms.TextBox txt_descProv;
-        private System.Windows.Forms.TextBox txt_precioProveedor;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button boton_limpiar;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txt_StockMin;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmb_proveedor;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -591,5 +608,15 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cmb_unidad;
         private System.Windows.Forms.Label label_fecha;
+        private System.Windows.Forms.TextBox txt_stock;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txt_preciof;
+        private System.Windows.Forms.TextBox txt_porc;
+        private System.Windows.Forms.TextBox txt_costo;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_descProv;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txt_precioProveedor;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

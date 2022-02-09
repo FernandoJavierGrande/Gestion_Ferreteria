@@ -27,11 +27,11 @@ namespace GestionFerreteria.clases
                 cmd.ExecuteNonQuery();
 
                 System.Windows.Forms.MessageBox.Show("carga correcta");
-                
+
 
                 conexion.Close();
                 return true;
-        }
+            }
             catch (Exception E)
             {
                 System.Windows.Forms.MessageBox.Show("Error al guardar el producto. Intente nuevamente ");
@@ -40,7 +40,7 @@ namespace GestionFerreteria.clases
                 return false;
             }
 
-}
+        }
 
 
     }

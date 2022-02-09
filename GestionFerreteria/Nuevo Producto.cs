@@ -107,17 +107,24 @@ namespace GestionFerreteria
             {
                 MessageBox.Show("Error al cargar las categorias, cierre la ventana e intente nuevamente");
             }
+            ultimo_id();
+            txt_codigo.Focus();
+            label_fecha.Text = DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy");
+        }
+        public int ultimo_id()
+        {
+            int id_numerico = 0;
             conexion = conectar();
             SqlCommand comando = new SqlCommand("SELECT MAX(id) FROM Productos", conexion);
             conexion.Open();
             SqlDataReader data = comando.ExecuteReader();
             if (data.Read())
             {
-                int id_aux = Convert.ToInt32(data[0]) + 1;
-                label_nuevoId.Text = id_aux.ToString();
+                id_numerico = Convert.ToInt32(data[0]) + 1;
+                label_nuevoId.Text = id_numerico.ToString();
             }
-            txt_codigo.Focus();
-            label_fecha.Text = DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy");
+
+            return id_numerico;
         }
 
         private void txt_codigo_Leave(object sender, EventArgs e)
@@ -204,21 +211,30 @@ namespace GestionFerreteria
             }
         }
 
-        private void txt_desc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                e.Handled = true;
-                txt_precioProveedor.Focus();
-            }
-        }
+        
 
         private void cmb_cat_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 e.Handled = true;
+                cmb_unidad.Focus();
+            }
+        }
+        private void cmb_unidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
                 txt_desc.Focus();
+            }
+        }
+        private void txt_desc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                txt_precioProveedor.Focus();
             }
         }
 
@@ -278,13 +294,30 @@ namespace GestionFerreteria
             {
                 e.Handled = true;
                 validarCamposNumericos(txt_StockMin);
+                txt_stock.Focus();
+            }
+        }
+        private void txt_stock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
+                validarCamposNumericos(txt_stock);
+                cmb_proveedor.Focus();
+            }
+        }
+        private void cmb_proveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                e.Handled = true;
                 boton_guardar.Focus();
             }
         }
 
         private void txt_descProv_Leave(object sender, EventArgs e) //resta el porcentaje de descuento del precio de lista del proveedor
         {
-            if (!txt_precioProveedor.Text.Trim().Equals("0") && !txt_descProv.Text.Trim().Equals("0"))
+            if (!txt_precioProveedor.Text.Trim().Equals("0") || !txt_descProv.Text.Trim().Equals("0"))
             {
                 if (validarCamposNumericos(txt_descProv) && validarCamposNumericos(txt_precioProveedor))
                 {
@@ -296,17 +329,11 @@ namespace GestionFerreteria
                     double precioDeLista;
 
 
-                    if (precioLista_temporal.Contains("."))  // si encuentra un punto lo reemplaza por una coma
-                    {
-                        precioLista_temporal = precioLista_temporal.Replace(".", ",");
-                    }
-                    precioDeLista = double.Parse(precioLista_temporal);
+                    
+                    precioDeLista = double.Parse(cambiarPuntoPorComaBack(precioLista_temporal));
 
-                    if (descuento_temporal.Contains("."))      // si encuentra un punto lo reemplaza por una coma
-                    {
-                        descuento_temporal = descuento_temporal.Replace(".", ",");
-                    }
-                    descuentoPrecioLista = double.Parse(descuento_temporal);
+                    
+                    descuentoPrecioLista = double.Parse(cambiarPuntoPorComaBack(descuento_temporal));
                    
                     auxPrecio = precioDeLista * descuentoPrecioLista / 100;
 
@@ -316,6 +343,11 @@ namespace GestionFerreteria
 
                     cambiarComaPorPuntoEnLaInterfaz(txt_descProv);
                 }
+
+            }
+            else
+            {
+                Console.WriteLine("esta en el else ");
             }
 
         }
@@ -331,18 +363,9 @@ namespace GestionFerreteria
                 string costo_temporal = txt_costo.Text.Trim();
 
 
-                if (costo_temporal.Contains("."))
-                {
-                    costo_temporal = costo_temporal.Replace(".",",");
-                }
-                double costo = double.Parse(costo_temporal);
+                double costo = double.Parse(cambiarPuntoPorComaBack(costo_temporal));
 
-                if (porcentaje_temporal.Contains("."))
-                {
-                    porcentaje_temporal = porcentaje_temporal.Replace(".", ",");
-                }
-
-                double porcentaje = double.Parse(porcentaje_temporal);
+                double porcentaje = double.Parse(cambiarPuntoPorComaBack(porcentaje_temporal));
 
 
                 auxPrecio = porcentaje * costo / 100;
@@ -350,13 +373,21 @@ namespace GestionFerreteria
                 precioFinal = auxPrecio + costo;
                 precioFinal = Math.Round(precioFinal);
 
-                Console.WriteLine(precioFinal);
 
                 txt_preciof.Text = precioFinal.ToString();
 
                 cambiarComaPorPuntoEnLaInterfaz(txt_porc);
             }
 
+        }
+        public string cambiarPuntoPorComaBack(string contenido_txt)
+        {
+            if (contenido_txt.Contains("."))
+            {
+                contenido_txt = contenido_txt.Replace(".", ",");
+            }
+
+            return contenido_txt;
         }
 
         public bool ValidarCampos()
@@ -523,7 +554,11 @@ namespace GestionFerreteria
             txt_preciof.BackColor = Color.White;    
             txt_StockMin.Clear();
             txt_StockMin.BackColor = Color.White;
+            ultimo_id();
+            txt_codigo.Focus();
+
         }
 
+        
     }
 }
