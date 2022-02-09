@@ -372,6 +372,7 @@
             this.txt_stock.Name = "txt_stock";
             this.txt_stock.Size = new System.Drawing.Size(51, 27);
             this.txt_stock.TabIndex = 12;
+            this.txt_stock.TextChanged += new System.EventHandler(this.txt_stock_TextChanged);
             this.txt_stock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_stock_KeyPress);
             // 
             // label20

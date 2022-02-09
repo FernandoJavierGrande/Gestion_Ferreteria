@@ -41,11 +41,28 @@ namespace GestionFerreteria
 
                 string insert = "insert into Productos ([codigo],[nombre],[marca],[descripcion],[categoria],[preciolista],[descuentolista], [preciobruto],[porcentaje],[preciofinal]) values ('" + txt_codigo.Text.ToUpper() + "','" + txt_nombre.Text.ToUpper() + "','" + txt_marca.Text.ToUpper() + "','" + txt_desc.Text.ToUpper() + "','" + cmb_cat.SelectedIndex.ToString().ToUpper() + "','" + double.Parse(txt_precioProveedor.Text) + "','" + double.Parse(txt_descProv.Text) + "','" + double.Parse(txt_costo.Text) + "','" + double.Parse(txt_porc.Text) + "','" + double.Parse(txt_preciof.Text) + "')";
 
+                string aux_id_stock = ultimo_id().ToString();
 
                 bool res = guardar.guardarNuevoProducto(insert);
-                if (res)
+
+                
+                string aux_stock = txt_stock.Text.Trim().ToUpper();
+                string aux_stock_min = txt_StockMin.Text.Trim().ToUpper();
+
+                if (res && (!aux_stock.Equals("") || !aux_stock_min.Equals("")))
                 {
+                    
+                    bool resp = guardar.nuevoStock(aux_id_stock,aux_stock,aux_stock_min);
+                    if (resp)
+                    {
+                        Console.WriteLine("stock ok");
+                    }
+                    else
+                    {
+                        Console.WriteLine("error al cargar stock");
+                    }
                     limpiar();
+                    
                 }
 
             }
@@ -153,6 +170,10 @@ namespace GestionFerreteria
             validarCamposNumericos(txt_descProv);
         }
         private void txt_StockMin_TextChanged(object sender, EventArgs e)
+        {
+            validarCamposNumericos(txt_StockMin);
+        }
+        private void txt_stock_TextChanged(object sender, EventArgs e)
         {
             validarCamposNumericos(txt_StockMin);
         }

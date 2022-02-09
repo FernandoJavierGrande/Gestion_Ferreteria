@@ -15,7 +15,7 @@ namespace GestionFerreteria.clases
         Producto producto = new Producto();
         public GuardarProducto()
         {
-            conexion.Open();
+            
         }
 
         public bool guardarNuevoProducto(string query)
@@ -23,6 +23,7 @@ namespace GestionFerreteria.clases
 
             try
             {
+                conexion.Open();
                 SqlCommand cmd = new SqlCommand(query, conexion);
                 cmd.ExecuteNonQuery();
 
@@ -40,6 +41,30 @@ namespace GestionFerreteria.clases
                 return false;
             }
 
+        }
+        public bool nuevoStock(string id, string stock, string stockMin)
+        {
+            try
+            {
+                conexion.Open();
+                string query = "INSERT INTO stock VALUES (@id, @stock, @stockMin)";
+
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@stock",stock);
+                cmd.Parameters.AddWithValue("@stockMin", stockMin);
+
+                cmd.ExecuteNonQuery();
+
+                System.Windows.Forms.MessageBox.Show("se cargo stock");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                
+            }
+
+            return true;
         }
 
 
