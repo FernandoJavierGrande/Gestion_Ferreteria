@@ -35,42 +35,63 @@ namespace GestionFerreteria
             validarCampos = ValidarCampos();
             if (validarCampos == true)
             {
-                MessageBox.Show("bandera = " + validarCampos);
+                //MessageBox.Show("bandera = " + validarCampos);
 
                 GuardarProducto guardar = new GuardarProducto();
 
-                string insert = "insert into Productos ([codigo],[nombre],[marca],[descripcion],[categoria],[preciolista],[descuentolista], [preciobruto],[porcentaje],[preciofinal]) values ('" + txt_codigo.Text.ToUpper() + "','" + txt_nombre.Text.ToUpper() + "','" + txt_marca.Text.ToUpper() + "','" + txt_desc.Text.ToUpper() + "','" + cmb_cat.SelectedIndex.ToString().ToUpper() + "','" + double.Parse(txt_precioProveedor.Text) + "','" + double.Parse(txt_descProv.Text) + "','" + double.Parse(txt_costo.Text) + "','" + double.Parse(txt_porc.Text) + "','" + double.Parse(txt_preciof.Text) + "')";
+                Producto producto = new Producto();
+
+                producto.codigo = txt_codigo.Text.Trim().ToUpper();
+                producto.codigo_barras = txt_barras.Text.Trim();
+                producto.nombre = txt_nombre.Text.Trim().ToUpper();
+                producto.marca = txt_marca.Text.Trim().ToUpper();
+                producto.categoria = cmb_cat.SelectedIndex.ToString();
+                producto.medida = cmb_unidad.SelectedItem.ToString().ToUpper();
+                producto.descripcion = txt_desc.Text.Trim().ToUpper();
+                producto.precio_lista = double.Parse(txt_precioProveedor.Text.Trim());
+                producto.descuento_lista = double.Parse(txt_descProv.Text.Trim());
+                producto.costo = double.Parse(txt_costo.Text.Trim());
+                producto.porcentaje = double.Parse(txt_porc.Text.Trim());
+                producto.precio = double.Parse(txt_preciof.Text.Trim());
+                producto.proveedor = cmb_proveedor.SelectedItem.ToString().ToUpper();
+                
+               
 
                 string aux_id_stock = ultimo_id().ToString();
 
-                bool res = guardar.guardarNuevoProducto(insert);
+                bool res = guardar.guardarNuevoProducto(producto);
 
                 
                 string aux_stock = txt_stock.Text.Trim().ToUpper();
                 string aux_stock_min = txt_StockMin.Text.Trim().ToUpper();
+                bool resp = false;
 
                 if (res && (!aux_stock.Equals("") || !aux_stock_min.Equals("")))
                 {
+                    resp = guardar.nuevoStock(aux_id_stock,aux_stock,aux_stock_min);
+                    if (!resp)
+                    {
+                        
+                    }
                     
-                    bool resp = guardar.nuevoStock(aux_id_stock,aux_stock,aux_stock_min);
-                    if (resp)
-                    {
-                        Console.WriteLine("stock ok");
-                    }
-                    else
-                    {
-                        Console.WriteLine("error al cargar stock");
-                    }
                     limpiar();
                     
                 }
+                if (res && resp)
+                {
+                    MessageBox.Show("carga correcta");
+                }
+                else if (res == true && resp == false)
+                {
+                    MessageBox.Show("error al cargar stock");
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error al cargar los datos");
+                }
 
             }
-            else
-            {
-                MessageBox.Show("bandera = " + validarCampos);
-
-            }
+            
         }
 
         private void boton_limpiar_Click(object sender, EventArgs e)
@@ -127,6 +148,7 @@ namespace GestionFerreteria
             ultimo_id();
             txt_codigo.Focus();
             label_fecha.Text = DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy");
+            
         }
         public int ultimo_id()
         {
@@ -160,6 +182,17 @@ namespace GestionFerreteria
   
 
         }
+        
+        private void txt_barras_Leave(object sender, EventArgs e)
+        {
+            if (!txt_barras.Text.Equals(""))
+            {
+                validarCamposNumericos(txt_barras);
+                
+            }
+            
+            
+        }
         private void txt_precioProveedor_TextChanged(object sender, EventArgs e)
         {
             validarCamposNumericos(txt_precioProveedor);
@@ -175,7 +208,7 @@ namespace GestionFerreteria
         }
         private void txt_stock_TextChanged(object sender, EventArgs e)
         {
-            validarCamposNumericos(txt_StockMin);
+            validarCamposNumericos(txt_stock);
         }
 
         private void txt_nombre_Leave(object sender, EventArgs e)
@@ -208,6 +241,16 @@ namespace GestionFerreteria
             {
                 e.Handled = true;
                 ColorCampos(txt_codigo);
+                txt_barras.Focus();
+            }
+        }
+        private void txt_barras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                
+                e.Handled= true;
+                validarCamposNumericos(txt_barras);
                 txt_nombre.Focus();
             }
         }
@@ -366,10 +409,7 @@ namespace GestionFerreteria
                 }
 
             }
-            else
-            {
-                Console.WriteLine("esta en el else ");
-            }
+            
 
         }
         private void txt_porc_Leave(object sender, EventArgs e) // suma el porcentaje especificado
@@ -421,8 +461,16 @@ namespace GestionFerreteria
             }
             if (cmb_cat.SelectedIndex==-1)
             {
-                
-                cmb_cat.SelectedIndex = 12;
+
+                cmb_cat.SelectedIndex=1;
+            }
+            if (cmb_unidad.SelectedIndex==-1)
+            {
+                cmb_unidad.SelectedIndex=1;
+            }
+            if (cmb_proveedor.SelectedIndex==-1)
+            {
+                cmb_proveedor.SelectedIndex=1;
             }
             bool validar;
             if (txt_codigo.BackColor == colorCancel || txt_nombre.BackColor == colorCancel || txt_precioProveedor.BackColor == colorCancel || txt_descProv.BackColor == colorCancel || txt_costo.BackColor == colorCancel || txt_porc.BackColor == colorCancel
@@ -557,6 +605,8 @@ namespace GestionFerreteria
             
             txt_codigo.Clear();
             txt_codigo.BackColor = Color.White;
+            txt_barras.Clear();
+            txt_barras.BackColor = Color.White;
             txt_nombre.Clear();
             txt_nombre.BackColor = Color.White;
             txt_marca.Clear();
@@ -575,8 +625,14 @@ namespace GestionFerreteria
             txt_preciof.BackColor = Color.White;    
             txt_StockMin.Clear();
             txt_StockMin.BackColor = Color.White;
+            txt_stock.Clear();
+            txt_stock.BackColor = Color.White;
             ultimo_id();
             txt_codigo.Focus();
+
+        }
+        public void cargarUnidades()
+        {
 
         }
 

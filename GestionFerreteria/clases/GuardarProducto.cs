@@ -18,16 +18,40 @@ namespace GestionFerreteria.clases
             
         }
 
-        public bool guardarNuevoProducto(string query)
+        public bool guardarNuevoProducto(Producto producto)
         {
 
             try
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand(query, conexion);
+
+                string insert = "INSERT INTO Productos ([codigo],[codigobarras],[nombre],[marca],[descripcion],[categoria],[medida],[preciolista],[descuentolista],[preciobruto],[porcentaje],[preciofinal],[proveedor]) VALUES (@codigo,@barras,@nombre,@marca,@descripcion,@categoria,@medida,@precioProv,@descProv,@costo,@porc,@precioFinal,@proveedor)";
+
+                SqlCommand cmd = new SqlCommand(insert, conexion);
+
+           
+
+                cmd.Parameters.AddWithValue("@codigo", producto.codigo);
+                cmd.Parameters.AddWithValue("@barras", producto.codigo_barras);
+                cmd.Parameters.AddWithValue("@nombre",producto.nombre);
+                cmd.Parameters.AddWithValue("@marca",producto.marca);
+                cmd.Parameters.AddWithValue("@descripcion", producto.descripcion);
+                cmd.Parameters.AddWithValue("@categoria", producto.categoria);
+                cmd.Parameters.AddWithValue("@medida", producto.medida);
+                cmd.Parameters.AddWithValue("@precioProv", producto.precio_lista);
+                cmd.Parameters.AddWithValue("@descProv", producto.descuento_lista);
+                cmd.Parameters.AddWithValue("@costo", producto.costo);
+                cmd.Parameters.AddWithValue("@porc", producto.porcentaje);
+                cmd.Parameters.AddWithValue("@precioFinal", producto.precio);
+                cmd.Parameters.AddWithValue("@proveedor", producto.proveedor);
+
+                
+
                 cmd.ExecuteNonQuery();
 
-                System.Windows.Forms.MessageBox.Show("carga correcta");
+
+
+                
 
 
                 conexion.Close();
@@ -56,7 +80,7 @@ namespace GestionFerreteria.clases
 
                 cmd.ExecuteNonQuery();
 
-                System.Windows.Forms.MessageBox.Show("se cargo stock");
+                
             }
             catch (Exception ex)
             {
