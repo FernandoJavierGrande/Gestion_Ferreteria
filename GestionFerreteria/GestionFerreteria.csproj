@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\buscar.cs" />
+    <Compile Include="clases\configuraciones.cs" />
     <Compile Include="clases\GuardarProducto.cs" />
     <Compile Include="clases\Conexion.cs" />
     <Compile Include="clases\Producto.cs" />
@@ -78,6 +80,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="clases\unidad.xml" />
+    <Content Include="clases\unidades.xml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

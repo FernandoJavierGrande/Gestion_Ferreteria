@@ -51,9 +51,6 @@ namespace GestionFerreteria.clases
 
 
 
-                
-
-
                 conexion.Close();
                 return true;
             }

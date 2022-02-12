@@ -52,6 +52,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txt_barras = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cmb_unidad = new System.Windows.Forms.ComboBox();
             this.txt_StockMin = new System.Windows.Forms.TextBox();
@@ -72,8 +74,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txt_precioProveedor = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_barras = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -326,6 +326,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del producto";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(213, 54);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(137, 20);
+            this.label21.TabIndex = 16;
+            this.label21.Text = "Codigo de barras";
+            // 
+            // txt_barras
+            // 
+            this.txt_barras.Location = new System.Drawing.Point(217, 74);
+            this.txt_barras.Name = "txt_barras";
+            this.txt_barras.Size = new System.Drawing.Size(133, 27);
+            this.txt_barras.TabIndex = 1;
+            this.txt_barras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_barras_KeyPress);
+            this.txt_barras.Leave += new System.EventHandler(this.txt_barras_Leave);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -343,7 +361,7 @@
             "unidad",
             "metro",
             "kg",
-            "gramo"});
+            "gramos"});
             this.cmb_unidad.Location = new System.Drawing.Point(957, 73);
             this.cmb_unidad.Name = "cmb_unidad";
             this.cmb_unidad.Size = new System.Drawing.Size(116, 28);
@@ -540,24 +558,6 @@
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Precio";
-            // 
-            // txt_barras
-            // 
-            this.txt_barras.Location = new System.Drawing.Point(217, 74);
-            this.txt_barras.Name = "txt_barras";
-            this.txt_barras.Size = new System.Drawing.Size(133, 27);
-            this.txt_barras.TabIndex = 1;
-            this.txt_barras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_barras_KeyPress);
-            this.txt_barras.Leave += new System.EventHandler(this.txt_barras_Leave);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(213, 54);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(137, 20);
-            this.label21.TabIndex = 16;
-            this.label21.Text = "Codigo de barras";
             // 
             // agregarNuevoProducto
             // 

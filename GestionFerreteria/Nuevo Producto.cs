@@ -149,6 +149,7 @@ namespace GestionFerreteria
             txt_codigo.Focus();
             label_fecha.Text = DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy");
             
+
         }
         public int ultimo_id()
         {
@@ -223,17 +224,17 @@ namespace GestionFerreteria
         private void txt_costo_Leave(object sender, EventArgs e)
         {
             ColorCampos(txt_costo);
-            cambiarComaPorPuntoEnLaInterfaz(txt_costo);
+            cambiarpuntoPorcomaEnLaInterfaz(txt_costo);
         }
         private void txt_preciof_Leave(object sender, EventArgs e)
         {
 
             ColorCampos(txt_preciof);
-            cambiarComaPorPuntoEnLaInterfaz(txt_preciof);
+            cambiarpuntoPorcomaEnLaInterfaz(txt_preciof);
         }
         private void txt_precioProveedor_Leave(object sender, EventArgs e)
         {
-            cambiarComaPorPuntoEnLaInterfaz(txt_precioProveedor);
+            cambiarpuntoPorcomaEnLaInterfaz(txt_precioProveedor);
         }
         private void txt_codigo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -405,7 +406,7 @@ namespace GestionFerreteria
 
                     txt_costo.Text = costoParaRellenar.ToString();
 
-                    cambiarComaPorPuntoEnLaInterfaz(txt_descProv);
+                    cambiarpuntoPorcomaEnLaInterfaz(txt_descProv);
                 }
 
             }
@@ -437,7 +438,7 @@ namespace GestionFerreteria
 
                 txt_preciof.Text = precioFinal.ToString();
 
-                cambiarComaPorPuntoEnLaInterfaz(txt_porc);
+                cambiarpuntoPorcomaEnLaInterfaz(txt_porc);
             }
 
         }
@@ -586,14 +587,14 @@ namespace GestionFerreteria
 
             return salida;
         }
-        public void cambiarComaPorPuntoEnLaInterfaz(TextBox txt)
+        public void cambiarpuntoPorcomaEnLaInterfaz(TextBox txt)
         {
-            if (txt.Text.Contains(","))
+            if (txt.Text.Contains("."))
             {
                 string texto_Temp = txt.Text.Trim();
-                texto_Temp = texto_Temp.Replace(",",".");
+                texto_Temp = texto_Temp.Replace(".",",");
                 txt.Text = texto_Temp;
-                if (txt.Text.Contains(","))
+                if (txt.Text.Contains("."))
                 {
                     Console.WriteLine("hay una coma " + texto_Temp);
                 }
@@ -633,7 +634,7 @@ namespace GestionFerreteria
         }
         public void cargarUnidades()
         {
-
+            
         }
 
         
